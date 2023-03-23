@@ -1,0 +1,14 @@
+#loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background-color: white;
+}
+
+#startbutton {
+    height: 100%;
+    width: 100vw;
+    background-color: pink;
+    font-size: 24px;
+}

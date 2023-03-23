@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="#" />
+    <title>Groovy_BlippAR</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://ar-libs.blippar.com/aframe/1.3.0/aframe-v1.3.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
+
+    <script src="../webar-sdk/webar-sdk-v1.5.0.min.js"
+      on-load=""
+      webar-mode="surface-tracking"
+      debug-mode="false"
+      auto-init="false"
+      auto-start="true"
+      static-camera="true"
+      logo-src="images/marker.webp"
+      logo-width="116px"
+      logo-height="116px"
+      progress-dot-ring-scale="0.5"
+      progress-dot-ring-color="#00AAFF"
+      progress-ring-scale="0.5"
+      progress-ring-color="#00FFFF"
+      progress-ring-line-width="5"
+
+      alert-border-color="#FFC0CB"
+      alert-border-width="5px"
+      alert-background-color="#FFC0CB"
+      alert-message-text-color="#00AAFF"
+      alert-button-color="#00FFFF"
+      alert-button-text-color="#283747"
+      alert-button-height="100px"
+      alert-camera-permission-text="we need to access the camera.."
+      alert-camera-permission-button-text="let's do this"
+      alert-motion-permission-text="and the motion sensor.."
+      alert-motion-permission-button-text="i'm in"
+      alert-box-width="300px"
+      alert-box-height="200px"
+      alert-box-font-size="24px"
+
+      ui-background-color="#FFC0CB"
+      ui-text-color="#00FFFF"
+      ui-portrait-text="This experience is optimised for portrait display only"
+      desktop-logo-src="images/test_desktop_logo.png"
+      desktop-logo-width="108px"
+      desktop-logo-height="30px"
+      issue-img-src="images/test_issue_img.png"
+      issue-img-width="116px"
+      issue-img-height="116px"
+      show-guide-view="true"
+      show-guide-animation-url=""></script>
+  </head>
+
+  <body>
+    <div id="loading">
+      <button id="startbutton">
+        let us begin.. (tap me)
+      </button>
+    </div>
+    <a-scene
+      webar-scene="key: 14e43b44-9547-4d45-9589-65763aeaf814"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+      loading-screen="enabled: false"
+      renderer="colorManagement: true;">
+
+      <a-camera webar-camera></a-camera>
+
+      <a-assets timeout="60000">
+        <a-asset-item animation-mixer id="testmodel" src="models/Cesium_Man.glb"></a-asset-item>
+      </a-assets>
+
+      <a-entity webar-stage>
+        <a-entity 
+          light="type: spot; angle: 60; color: #FF0000;"
+          position="5 3 0" 
+          intensity="1"
+          angle="90"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 1000; elasticity: 500"
+        ></a-entity>
+        <a-entity 
+          light="type: spot; angle: 60; color: #013220;"
+          position="5 3 0" 
+          intensity="1"
+          angle="90"
+          animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 1400; elasticity: 500"
+        ></a-entity>
+        <a-entity 
+          gltf-model="#testmodel"
+          animation-mixer
+          id="testmodel_1"
+          rotation="0 90 0"
+          position="-3 0 0"
+          animation="property: position; to: 3 0 0; dur: 6000; easing: linear; loop: true"
+          scale="1 1 1"
+          webar-loadmonitor="elType: glb"
+        ></a-entity>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      document.querySelector("button").onclick = function() {
+        document.querySelector("#loading").style.display = "none";
+        const audio = new Audio('sounds/GrooveLikeAMotherLicker.mp3');
+        audio.loop = true;
+        audio.play();
+        letsBegin();
+      }
+
+      function letsBegin(){
+        WEBARSDK.Init();
+        
+        WEBARSDK.SetStageReadyCallback(() => {
+          console.info('Stage is ready now!!!');
+        });
+
+        WEBARSDK.SetGuideViewCallbacks(
+          startGuideViewCallback = () => {
+            console.log(" Start(ed) hand guide animation");
+          },
+
+          stopGuideViewCallback = () => {
+            console.log(" Stop(ped) hand guide animation");
+          }
+        );
+      }
+    </script>
+  </body>
+</html>
