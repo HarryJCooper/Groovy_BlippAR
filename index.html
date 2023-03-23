@@ -73,8 +73,30 @@
       </a-assets>
 
       <a-entity webar-stage>
-        <a-box scale="5 0.05 5" position="0 -0.05 0" roughness="0.5">
+        
+        <a-entity 
+            light="type: point; intensity: 1; distance: 2.5; decay: 4"
+            position="-3 0 -2.5"
+        ></a-entity>
+        <a-entity 
+            light="type: point; intensity: 1; distance: 2.5; decay: 4"
+            position="3 0 -2.5"
+        ></a-entity>
+        <a-entity 
+            light="type: point; intensity: 1; distance: 2.5; decay: 4"
+            position="3 0 2.5"
+        ></a-entity>
+        <a-entity 
+            light="type: point; intensity: 1; distance: 2.5; decay: 4"
+            position="-3 0 2.5"
+        ></a-entity>
+
+        <a-box scale="6 0.05 5" position="0 -0.05 0" roughness="0.5" color="#FFC0CB">
         </a-box>
+
+        <a-box scale="6 5 0.5" position="0 2.5 -2.5" roughness="0.5" color="#FFC0CB">
+        </a-box>
+
         <a-entity 
           light="type: spot; angle: 60; color: #FF0000;"
           position="5 3 0" 
@@ -87,6 +109,7 @@
           intensity="1"
           animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 1400; elasticity: 500"
         ></a-entity>
+
         <a-entity 
           gltf-model="#testmodel"
           animation-mixer
