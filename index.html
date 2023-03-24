@@ -99,19 +99,36 @@
         </a-box>
         <a-box scale="6 5 0.5" position="0 2.5 -2.5" roughness="0.5" color="#FFC0CB">
         </a-box>
+        <a-box scale="0.5 5 6" position="-3 2.5 0" roughness="0.5" color="#FFC0CB">
+        </a-box>
+        <a-box scale="0.5 5 6" position="3 2.5 0" roughness="0.5" color="#FFC0CB">
+        </a-box>
 
         <!-- spotlights -->
         <a-entity 
           light="type: spot; angle: 60; color: #FF0000;"
-          position="5 3 0" 
+          position="3 3 -2" 
           intensity="1"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 1000; elasticity: 500"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 3000;"
         ></a-entity>
         <a-entity 
-          light="type: spot; angle: 60; color: #013220;"
-          position="5 3 0" 
+          light="type: spot; angle: 60; color: #013220; intensity: 4"
+          position="3 3 2" 
           intensity="1"
-          animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 1400; elasticity: 500"
+          animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 2500;"
+        ></a-entity>
+
+        <a-entity 
+          light="type: spot; angle: 60; color: #FF0000;"
+          position="-3 3 -2" 
+          intensity="1"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4500;"
+        ></a-entity>
+        <a-entity 
+          light="type: spot; angle: 60; color: #013220; intensity: 4"
+          position="-3 3 2" 
+          intensity="1"
+          animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 4000;"
         ></a-entity>
 
         <!-- adds peculiar slowly spinning models -->
