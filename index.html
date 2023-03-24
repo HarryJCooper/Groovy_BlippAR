@@ -71,6 +71,7 @@
 
       <a-assets timeout="60000">
         <a-asset-item animation-mixer id="testmodel" src="models/Cesium_Man.glb"></a-asset-item>
+        <a-asset-item animation-mixer id="baseman" src="models/baseMan.glb"></a-asset-item>
       </a-assets>
 
       <a-entity webar-stage>
@@ -113,7 +114,66 @@
           animation="property: rotation; from: 0 90 0; to: 0 -90 0; loop: true; dur: 1400; elasticity: 500"
         ></a-entity>
 
-        <!-- main model -->
+        <!-- adds peculiar slowly spinning models -->
+        <a-entity
+          rotation="0 0 0"
+          position="-2 0 -1.5"
+          animation="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true"
+        >
+          <a-entity 
+            gltf-model="#baseman"
+            animation-mixer
+            id="baseMan_1"
+            scale="25 25 25"
+            webar-loadmonitor="elType: glb"
+          ></a-entity>
+          <a-circle 
+            radius="0.5" 
+            position="0 0.05 0" 
+            rotation="-90 0 0"
+            color="#00FFFF"
+          ></a-circle>
+        </a-entity>
+        <a-entity
+          rotation="0 0 0"
+          position="0 0 -1.5"
+          animation="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true"
+        >
+          <a-entity 
+            gltf-model="#baseman"
+            animation-mixer
+            id="baseMan_1"
+            scale="25 25 25"
+            webar-loadmonitor="elType: glb"
+          ></a-entity>
+          <a-circle 
+            radius="0.5" 
+            position="0 0.05 0" 
+            rotation="-90 0 0"
+            color="#00FFFF"
+          ></a-circle>
+        </a-entity>
+        <a-entity
+          rotation="0 0 0"
+          position="2 0 -1.5"
+          animation="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true"
+        >
+          <a-entity 
+            gltf-model="#baseman"
+            animation-mixer
+            id="baseMan_1"
+            scale="25 25 25"
+            webar-loadmonitor="elType: glb"
+          ></a-entity>
+          <a-circle 
+            radius="0.5" 
+            position="0 0.05 0" 
+            rotation="-90 0 0"
+            color="#00FFFF"
+          ></a-circle>
+        </a-entity>
+
+        <!-- the star of the show -->
         <a-entity 
           gltf-model="#testmodel"
           animation-mixer
